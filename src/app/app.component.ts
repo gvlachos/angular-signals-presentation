@@ -38,11 +38,7 @@ export class AppComponent {
 
   private control = new FormControl('', { nonNullable: true });
 
-  protected form = new FormGroup<{
-    option: FormControl<string>;
-  }>({
-    option: this.control
-  });
+  protected form = new FormGroup({ option: this.control });
 
   protected selected = toSignal(this.control.valueChanges);
 }
