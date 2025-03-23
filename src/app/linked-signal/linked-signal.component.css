@@ -1,0 +1,9 @@
+.previous-page-button,
+.next-page-button{
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: lightgreen;
+  letter-spacing: 2px;
+}

@@ -1,3 +1,56 @@
-<div class="text-3xl font-bold underline">
-  Hello world!
+<h1 class="text-3xl font-bold underline m-8">
+  Angular Signals - A story of change
+</h1>
+
+<h4 class="text-l m-8 max-w-4xl tracking-widest">
+  <div class="mb-4">
+    Angular signals were introduced with Angular 16 (2023) as part of a number of changes in Angular, also called the
+    Angular Renaissance.
+  </div>
+
+  <div class="mb-2">
+    Used to synchronize application data with the UI (aka change detection) they intend to simplify
+    developer experience and provide the foundations for future improvements in Angular.
+  </div>
+</h4>
+
+<h2 class="text-2xl font-bold m-8">Signals</h2>
+
+<div class="grid grid-cols-[300px_minmax(330px,_1fr)] grid-rows-1 gap-2">
+  <form [formGroup]="form">
+    <fieldset class="flex flex-col space-y-4 ml-8">
+      @for (option of signals; track option.label) {
+        <div class="grid grid-cols-[140px_1fr] grid-rows-1 gap-8">
+          <label [for]="option.value"
+            [class.text-blue-600]="form.value.option === option.value"
+            [class.font-bold]="form.value.option === option.value"
+          >{{ option.label }}</label>
+
+          <input [id]="option.value"
+            type="radio"
+            formControlName="option"
+            [value]="option.value"
+            class="cursor-pointer"/>
+        </div>
+      }
+    </fieldset>
+  </form>
+
+  <div class="content ml-2">
+    @if (form.value.option === writableSignal) {
+      <app-writable-signal />
+    }
+
+    @if (form.value.option === computedSignal) {
+      <app-computed-signal />
+    }
+
+    @if (form.value.option === effectSignal) {
+      <app-effect-signal />
+    }
+
+    @if (form.value.option === linkedSignal) {
+      <app-linked-signal />
+    }
+  </div>
 </div>
