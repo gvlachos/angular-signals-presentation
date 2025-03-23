@@ -37,19 +37,19 @@
   </form>
 
   <div class="content ml-2">
-    @if (form.value.option === writableSignal) {
+    @if (selected() === writableSignal) {
       <app-writable-signal />
     }
 
-    @if (form.value.option === computedSignal) {
+    @if (selected() === computedSignal) {
       <app-computed-signal />
     }
 
-    @if (form.value.option === effectSignal) {
+    @if (selected() === effectSignal) {
       <app-effect-signal />
     }
 
-    @if (form.value.option === linkedSignal) {
+    @if (selected() === linkedSignal) {
       <app-linked-signal />
     }
   </div>

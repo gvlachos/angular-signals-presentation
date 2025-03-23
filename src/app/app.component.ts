@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { WritableSignalComponent } from './writable-signal/writable-signal.component';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ComputedSignalComponent } from './computed-signal/computed-signal.component';
 import { EffectSignalComponent } from './effect-signal/effect-signal.component';
 import { LinkedSignalComponent } from './linked-signal/linked-signal.component';
+import { WritableSignalComponent } from './writable-signal/writable-signal.component';
 
 export interface Option {
   label: string;
@@ -35,7 +36,13 @@ export class AppComponent {
     {label: 'Linked Singal', value: this.linkedSignal},
   ];
 
-  protected form: FormGroup = new FormGroup({
-    option: new FormControl('')
+  private control = new FormControl('', { nonNullable: true });
+
+  protected form = new FormGroup<{
+    option: FormControl<string>;
+  }>({
+    option: this.control
   });
+
+  protected selected = toSignal(this.control.valueChanges);
 }
