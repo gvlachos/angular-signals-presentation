@@ -4,9 +4,9 @@ import { DataSourceApiService } from '../data-source-api.service';
 @Component({
   selector: 'app-resource',
   imports: [],
-  providers: [DataSourceApiService],
+  providers: [],
   templateUrl: './resource.component.html',
-  styleUrl: './resource.component.css'
+  styleUrl: './resource.component.css',
 })
 export class ResourceComponent {
   readonly resourceStatus = ResourceStatus;
@@ -14,10 +14,9 @@ export class ResourceComponent {
 
   protected dataSourceApiService = inject(DataSourceApiService);
 
-  protected error = this.dataSourceApiService.quotesResponse.status() === this.resourceStatus.Error;
+  protected error = this.dataSourceApiService.status() === this.resourceStatus.Error;
 
   protected next(): void {
     this.dataSourceApiService.skip.update(skip => skip + this.dataSourceApiService.limit());
-    this.dataSourceApiService.quotesResponse.reload();
   }
 }
