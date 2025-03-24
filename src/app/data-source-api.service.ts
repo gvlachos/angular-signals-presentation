@@ -23,6 +23,7 @@ export class DataSourceApiService {
     },
   });
 
+  // alternate way to define resource: does not use a request signal, works with the effect signal to load new data
   // quotesResponseAlt = resource<QuotesResponse, unknown>({
   //   loader: async () => {
   //     const url = `https://dummyjson.com/quotes?limit=${ this.limit() }&skip=${ this.skip() }`;
