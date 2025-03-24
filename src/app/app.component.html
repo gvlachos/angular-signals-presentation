@@ -16,6 +16,7 @@
 
 <h2 class="text-2xl font-bold m-8">Signals</h2>
 
+<div class="text-md text-green-600 ml-8 mb-2 font-semibold">Angular 19.2.4</div>
 <div class="grid grid-cols-[300px_minmax(330px,_1fr)] grid-rows-1 gap-2">
   <form [formGroup]="form">
     <fieldset class="flex flex-col space-y-4 ml-8">
@@ -36,21 +37,25 @@
     </fieldset>
   </form>
 
-  <div class="content ml-2">
+  <div class="content">
     @if (selected() === writableSignal) {
       <app-writable-signal />
+      <div class="text-lg text-green-600 font-semibold text-center">Stable</div>
     }
 
     @if (selected() === computedSignal) {
       <app-computed-signal />
+      <div class="text-lg text-green-600 font-semibold text-center">Stable</div>
     }
 
     @if (selected() === effectSignal) {
       <app-effect-signal />
+      <div class="text-lg text-green-600 font-semibold text-center">Developer preview</div>
     }
 
     @if (selected() === linkedSignal) {
       <app-linked-signal />
+      <div class="text-md text-green-600 font-semibold text-center mt-4">Developer preview</div>
     }
   </div>
 </div>
