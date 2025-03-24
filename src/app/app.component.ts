@@ -5,6 +5,7 @@ import {ComputedSignalComponent} from './computed-signal/computed-signal.compone
 import {EffectSignalComponent} from './effect-signal/effect-signal.component';
 import {LinkedSignalComponent} from './linked-signal/linked-signal.component';
 import {WritableSignalComponent} from './writable-signal/writable-signal.component';
+import { ResourceComponent } from "./resource/resource.component";
 
 export interface Option {
   label: string;
@@ -19,7 +20,8 @@ export interface Option {
     ComputedSignalComponent,
     EffectSignalComponent,
     LinkedSignalComponent,
-  ],
+    ResourceComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -28,12 +30,14 @@ export class AppComponent {
   readonly computedSignal = 'computed-signal';
   readonly effectSignal = 'effect-signal';
   readonly linkedSignal = 'linked-signal';
+  readonly resourceApi = 'resource-api';
 
   readonly signals: Option[] = [
     {label: 'Writable Singal', value: this.writableSignal},
     {label: 'Computed Singal', value: this.computedSignal},
     {label: 'Effect Singal', value: this.effectSignal},
     {label: 'Linked Singal', value: this.linkedSignal},
+    {label: 'Resource API', value: this.resourceApi},
   ];
 
   private control = new FormControl('', {nonNullable: true});

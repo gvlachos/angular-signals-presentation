@@ -1,0 +1,45 @@
+<div class="ml-2 mr-2">
+  @if (dataSourceApiService.quotesResponse.value()?.quotes?.length) {
+    <table class="container mx-auto border-collapse border border-gray-300">
+      <tr>
+        <th class="max-w-sm">
+          Quote
+        </th>
+        <th class="min-w-52 text-center">
+          Author
+        </th>
+      </tr>
+
+      @for (
+        quote of dataSourceApiService.quotesResponse.value()?.quotes;
+        track quote.id
+      ) {
+        <tr class="border border-gray-300">
+          <td class="pt-4 pb-4 pl-2 pr-2 truncate max-w-sm" [title]="quote.quote">{{ quote.quote }}</td>
+          <td class="min-w-52 text-center">{{ quote.author }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td class="border border-gray-300 pt-4 pb-4 pl-2 pr-2 text-center" colspan="2">
+            No quotes found
+          </td>
+        </tr>
+      }
+    </table>
+
+    <div class="flex items-center justify-between font-semibold mt-2 ml-4 mr-4">
+      <div class="status" [class.text-red-600]="error">
+        <div class="status-text">
+          {{ resourceStatusText[dataSourceApiService.quotesResponse.status()] }}
+        </div>
+      </div>
+      <span class="count">Quotes: {{ dataSourceApiService.quotesResponse.value()?.quotes?.length }}</span>
+      <div>
+        <button
+          (click)="next()"
+          class="cursor-pointer rounded-md border border-gray-300 p-2"
+        >More</button>
+      </div>
+    </div>
+  }
+</div>
