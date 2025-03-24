@@ -1,13 +1,12 @@
-import { Component, computed, signal } from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 
 @Component({
   selector: 'app-computed-signal',
   imports: [],
   templateUrl: './computed-signal.component.html',
-  styleUrl: './computed-signal.component.css'
+  styleUrl: './computed-signal.component.css',
 })
 export class ComputedSignalComponent {
-
   /**
    * A writable signal
    */
@@ -19,8 +18,7 @@ export class ComputedSignalComponent {
   protected double = computed(() => this.signal() * 2);
 
   /**
-  * Increment the signal by 1.
-  */
+   * Increment the signal by 1.
+   */
   protected increment = () => this.signal.update(current => current + 1);
-
 }

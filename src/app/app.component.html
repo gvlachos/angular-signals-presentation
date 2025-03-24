@@ -1,37 +1,42 @@
-<h1 class="text-3xl font-bold underline m-8">
+<h1 class="m-8 text-3xl font-bold underline">
   Angular Signals - A story of change
 </h1>
 
 <h4 class="text-l m-8 max-w-4xl tracking-widest">
   <div class="mb-4">
-    Angular signals were introduced with Angular 16 (2023) as part of a number of changes in Angular, also called the
-    Angular Renaissance.
+    Angular signals were introduced with Angular 16 (2023) as part of a number
+    of changes in Angular, also called the Angular Renaissance.
   </div>
 
   <div class="mb-2">
-    Used to synchronize application data with the UI (aka change detection) they intend to simplify
-    developer experience and provide the foundations for future improvements in Angular.
+    Used to synchronize application data with the UI (aka change detection) they
+    intend to simplify developer experience and provide the foundations for
+    future improvements in Angular.
   </div>
 </h4>
 
-<h2 class="text-2xl font-bold m-8">Signals</h2>
+<h2 class="m-8 text-2xl font-bold">Signals</h2>
 
-<div class="text-md text-green-600 ml-8 mb-2 font-semibold">Angular 19.2.4</div>
+<div class="text-md mb-2 ml-8 font-semibold text-green-600">Angular 19.2.4</div>
 <div class="grid grid-cols-[300px_minmax(330px,_1fr)] grid-rows-1 gap-2">
   <form [formGroup]="form">
-    <fieldset class="flex flex-col space-y-4 ml-8">
+    <fieldset class="ml-8 flex flex-col space-y-4">
       @for (option of signals; track option.label) {
         <div class="grid grid-cols-[140px_1fr] grid-rows-1 gap-8">
-          <label [for]="option.value"
+          <label
+            [for]="option.value"
             [class.text-blue-600]="form.value.option === option.value"
             [class.font-bold]="form.value.option === option.value"
-          >{{ option.label }}</label>
+            >{{ option.label }}</label
+          >
 
-          <input [id]="option.value"
+          <input
+            [id]="option.value"
             type="radio"
             formControlName="option"
             [value]="option.value"
-            class="cursor-pointer"/>
+            class="cursor-pointer"
+          />
         </div>
       }
     </fieldset>
@@ -40,22 +45,26 @@
   <div class="content">
     @if (selected() === writableSignal) {
       <app-writable-signal />
-      <div class="text-lg text-green-600 font-semibold text-center">Stable</div>
+      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === computedSignal) {
       <app-computed-signal />
-      <div class="text-lg text-green-600 font-semibold text-center">Stable</div>
+      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === effectSignal) {
       <app-effect-signal />
-      <div class="text-lg text-green-600 font-semibold text-center">Developer preview</div>
+      <div class="text-center text-lg font-semibold text-green-600">
+        Developer preview
+      </div>
     }
 
     @if (selected() === linkedSignal) {
       <app-linked-signal />
-      <div class="text-md text-green-600 font-semibold text-center mt-4">Developer preview</div>
+      <div class="text-md mt-4 text-center font-semibold text-green-600">
+        Developer preview
+      </div>
     }
   </div>
 </div>
