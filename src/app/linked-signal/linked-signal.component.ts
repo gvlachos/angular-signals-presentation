@@ -68,7 +68,7 @@ export class LinkedSignalComponent {
 
 
   /**
-   * Set the nexst page.
+   * Set the next page.
    */
   protected previousPage() {
     this.currentPage.update((p) => p > 1 ? p - 1 : 1);
