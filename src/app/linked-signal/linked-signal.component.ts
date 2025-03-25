@@ -1,7 +1,7 @@
 import { Component, computed, linkedSignal, Signal, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-type DataItem = { id: number; value: string };
+interface DataItem { id: number; value: string }
 
 @Component({
   selector: 'app-linked-signal',
@@ -50,7 +50,7 @@ export class LinkedSignalComponent {
       current: string | undefined,
       previous?: { source: string | undefined; value: number | undefined },
     ) => {
-      if (!current?.length) 1;
+      if (!current?.length) return 1;
 
       const index = current
         ? this.items().findIndex(item => item.value.includes(current))
