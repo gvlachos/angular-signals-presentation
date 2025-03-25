@@ -1,14 +1,11 @@
 <div class="flex flex-col gap-12">
   <div>
-    Current value: <span class="font-bold">{{ signal() }}</span
-    >, double the value: <span class="font-bold">{{ double() }}</span>
+    Current value: <span class="font-bold">{{ signal() }}</span>, double the value: <span class="font-bold">{{ double()
+      }}</span>
   </div>
 
   <div>
-    <button
-      (click)="increment()"
-      class="cursor-pointer rounded-md border border-gray-300 p-2"
-    >
+    <button (click)="increment()" class="cursor-pointer rounded-md border border-gray-300 p-2">
       Increment value by 1
     </button>
   </div>
