@@ -49,6 +49,8 @@ export class DataSourceApiService {
   status: Signal<ResourceStatus> = this.quotesResponse.status;
 
   quotes: Signal<Quote[]> = this.data.asReadonly();
+  // the following line is not quite equivalent to the above line
+  // quotes: Signal<Quote[]> = computed(() => this.quotesResponse.value()?.quotes ?? []);
 
   total: Signal<number | undefined> = computed(
     () => this.quotesResponse.value()?.total,
