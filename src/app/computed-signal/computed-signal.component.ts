@@ -1,4 +1,3 @@
-// prettier-ignore
 import { Component,computed,signal,Signal,WritableSignal } from '@angular/core';
 
 @Component({

@@ -1,4 +1,3 @@
-// prettier-ignore
 import { Component,computed,inject,ResourceStatus,Signal,} from '@angular/core';
 import { DataSourceApiService } from '../data-source-api.service';
 
