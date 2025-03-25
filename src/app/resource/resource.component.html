@@ -1,33 +1,35 @@
-<div class="ml-2 mr-2">
-  <table class="container mx-auto border-collapse border border-gray-300" style="min-height: 320px;">
+<div class="mr-2 ml-2">
+  <table
+    class="container mx-auto border-collapse border border-gray-300"
+    style="min-height: 320px"
+  >
     <thead>
       <tr>
-        <th class="max-w-sm">
-          Id
-        </th>
-        <th class="max-w-sm">
-          Quote
-        </th>
-        <th class="min-w-52 text-center">
-          Author
-        </th>
+        <th class="max-w-sm min-w-12">Id</th>
+        <th class="max-w-sm">Quote</th>
+        <th class="max-w-10 text-center">Author</th>
       </tr>
     </thead>
 
-    <tbody style="min-height: 320px;">
-      @for (
-        quote of dataSourceApiService.quotes();
-        track quote.id
-      ) {
+    <tbody style="min-height: 320px">
+      @for (quote of dataSourceApiService.quotes(); track quote.id) {
         <tr class="border border-gray-300">
-          <td class="min-w-12 pl-2 pr-2 text-center">{{ quote.id }}</td>
-          <td class="pt-4 pb-4 pl-2 pr-2 truncate max-w-sm" [title]="quote.quote">{{ quote.quote }}</td>
-          <td class="min-w-52 text-center">{{ quote.author }}</td>
+          <td class="pr-2 pl-2 text-center">{{ quote.id }}</td>
+          <td
+            class="max-w-sm truncate pt-4 pr-2 pb-4 pl-2"
+            [title]="quote.quote"
+          >
+            {{ quote.quote }}
+          </td>
+          <td class="text-center">{{ quote.author }}</td>
         </tr>
       } @empty {
         @if (!dataSourceApiService.isloading()) {
           <tr>
-            <td class="border border-gray-300 pt-4 pb-4 pl-2 pr-2 text-center" colspan="2">
+            <td
+              class="border border-gray-300 pt-4 pr-2 pb-4 pl-2 text-center"
+              colspan="3"
+            >
               No quotes found
             </td>
           </tr>
@@ -36,21 +38,23 @@
     </tbody>
   </table>
 
-  <div class="flex items-center justify-between font-semibold mt-2 ml-4 mr-4">
-    <div class="status" [class.text-red-600]="error">
+  <div class="mt-2 mr-4 ml-4 flex items-center justify-between font-semibold">
+    <div class="status" [class.text-red-600]="error()">
       <div class="status-text">
         {{ resourceStatusText[dataSourceApiService.status()] }}
       </div>
     </div>
-    <span class="count">
-      Quotes: {{ dataSourceApiService.quotes()?.length }}
-    </span>
     <div>
       <button
-        (click)="next()"
-        class="cursor-pointer rounded-md border border-gray-300 p-2"
-      >More</button>
+        [disabled]="disableNext()"
+        (click)="nextPage()"
+        class="rounded-md border border-gray-300 p-2"
+        [class.cursor-not-allowed]="disableNext()"
+        [class.opacity-60]="disableNext()"
+        [class.cursor-pointer]="!disableNext()"
+      >
+        More
+      </button>
     </div>
   </div>
 </div>
-

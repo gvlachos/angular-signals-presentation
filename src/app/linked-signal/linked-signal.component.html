@@ -1,5 +1,5 @@
 <h3 class="mb-2 text-xl font-bold">
-  {{ searchTerm().length ? 'Searching for ' + searchTerm() : 'Search' }}
+  {{ searchTerm() ? 'Searching for ' + searchTerm() : 'Search' }}
 </h3>
 
 <input type="text" class="border-2 p-2" [(ngModel)]="search" />

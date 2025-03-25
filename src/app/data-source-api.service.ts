@@ -1,61 +1,64 @@
-import { resource, Injectable, signal, computed, effect, ResourceLoaderParams, linkedSignal, WritableSignal, ResourceStatus } from '@angular/core';
+// prettier-ignore
+import { computed,Injectable,linkedSignal,resource,ResourceRef,ResourceStatus,signal,Signal,WritableSignal } from '@angular/core';
 import { DefaultLimit, StartPosition } from './model/constants';
+import { Quote } from './model/data.model';
 import { QuotesResponse } from './model/response.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataSourceApiService {
-  limit = signal(DefaultLimit);
-
-  skip = signal(StartPosition);
-
-  quotesResponse = resource<QuotesResponse, unknown>({
-    request: () => `https://dummyjson.com/quotes?limit=${ this.limit() }&skip=${ this.skip() }`,
-    loader: async (options) => {
+  private quotesResponse: ResourceRef<QuotesResponse | undefined> = resource<
+    QuotesResponse,
+    unknown
+  >({
+    request: () => this.url(),
+    loader: async options => {
       const request = options.request as string;
       const response = await fetch(request).then(response => {
-        if (!response.ok) { throw new Error(response.statusText); }
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
         return response.json();
       });
-      console.log(new Date(), response)
       return response;
     },
   });
 
-  // alternate way to define resource: does not use a request signal, works with the effect signal to load new data
-  // quotesResponseAlt = resource<QuotesResponse, unknown>({
-  //   loader: async () => {
-  //     const url = `https://dummyjson.com/quotes?limit=${ this.limit() }&skip=${ this.skip() }`;
-  //     const response = await fetch(url).then(response => {
-  //       if (!response.ok) { throw new Error(response.statusText); }
-  //       return response.json();
-  //     });
-  //     console.log(new Date(), response)
-  //     return response;
-  //   },
-  // });
+  private data: WritableSignal<Quote[]> = linkedSignal({
+    source: this.quotesResponse.value,
+    computation: (current, previous): Quote[] => {
+      const shown: Quote[] = (previous?.value ?? []) as Quote[];
+      const update: Quote[] = (current?.quotes ?? []) as Quote[];
+      return this.isloading() ? shown : update;
+    },
+  });
 
-  status = this.quotesResponse.status;
+  limit: WritableSignal<number> = signal(DefaultLimit);
 
-  isloading = computed(() => this.status() === ResourceStatus.Loading);
+  skip: WritableSignal<number> = signal(StartPosition);
 
-  quotes = computed(() => this.quotesResponse.value()?.quotes);
+  url: Signal<string> = computed(
+    () =>
+      `https://dummyjson.com/quotes?limit=${this.limit()}&skip=${this.skip()}`,
+  );
 
-  total = computed(() => this.quotesResponse.value()?.total);
+  isloading: Signal<boolean> = computed(
+    () => this.status() === ResourceStatus.Loading,
+  );
 
-  hasMore = computed(() => {
+  status: Signal<ResourceStatus> = this.quotesResponse.status;
+
+  quotes: Signal<Quote[]> = computed(() => this.data());
+
+  total: Signal<number | undefined> = computed(
+    () => this.quotesResponse.value()?.total,
+  );
+
+  hasMore: Signal<boolean> = computed(() => {
     const total = this.total();
     if (!total) return false;
 
     return total > this.skip() + this.limit();
   });
-
-  // constructor(){
-  //   effect(() => {
-  //     this.skip();
-  //     this.limit();
-  //     this.quotesResponseAlt.reload();
-  //   })
-  // }
 }

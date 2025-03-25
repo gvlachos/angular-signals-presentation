@@ -6,17 +6,17 @@ Does not use a component framework.
 
 ## Theory
 
-Signals used for change detection to  drive DOM updates is not a new concept *(1)* *(2)*. Signals were first introduced in Angular in 2023 at version 16 with the first production implementation at version 17.
+Signals used for change detection to drive DOM updates is not a new concept _(1)_ _(2)_. Signals were first introduced in Angular in 2023 at version 16 with the first production implementation at version 17.
 
-Signals offer a simplified reactive framework for change detection moving away from RxJS. At the moment they are used to manage state (read-only and writable signals), derived state (computed signal) and side effects e.g. logging (effect signal) *(3)*
+Signals offer a simplified reactive framework for change detection moving away from RxJS. At the moment they are used to manage state (read-only and writable signals), derived state (computed signal) and side effects e.g. logging (effect signal) _(3)_
 
-At the moment signals are not implemented in Angular forms and the HttpClient, although there are some interesting developments especially on the latter *(4)* *(5)*.
+At the moment signals are not implemented in Angular forms and the HttpClient, although there are some interesting developments especially on the latter _(4)_ _(5)_.
 
-Also there is Interoperability with RxJS by using the RxJS interop package *(6)*
+Also there is Interoperability with RxJS by using the RxJS interop package _(6)_
 
 ## Tutorial
 
-An interactive tutorial by Maciej Wojcik (@maciej-wojcik.bsky.social) that is updated regularly can be found [here](https://angular-signals.dev/)*
+An interactive tutorial by Maciej Wojcik (@maciej-wojcik.bsky.social) that is updated regularly can be found [here](https://angular-signals.dev/)\*
 
 ## References
 

@@ -15,9 +15,8 @@
   </div>
 </h4> -->
 
-<h2 class="m-8 text-2xl font-bold">Signals</h2>
+<h2 class="m-4 text-2xl font-bold">Signals</h2>
 
-<div class="text-md mb-2 ml-8 font-semibold text-green-600">Angular 19.2.4</div>
 <div class="grid grid-cols-[300px_minmax(330px,_1fr)] grid-rows-1 gap-2">
   <form [formGroup]="form">
     <fieldset class="ml-8 flex flex-col space-y-4">
@@ -43,6 +42,10 @@
   </form>
 
   <div class="content">
+    <div class="text-md mb-4 ml-8 text-center font-semibold text-green-600">
+      Angular 19.2.4
+    </div>
+
     @if (selected() === writableSignal) {
       <app-writable-signal />
       <div class="text-center text-lg font-semibold text-green-600">Stable</div>

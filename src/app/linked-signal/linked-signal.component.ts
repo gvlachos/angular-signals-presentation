@@ -1,5 +1,8 @@
-import {Component, computed, linkedSignal, signal} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+// prettier-ignore
+import { Component,computed,linkedSignal,Signal,signal,WritableSignal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+type DataItem = { id: number; value: string };
 
 @Component({
   selector: 'app-linked-signal',
@@ -8,7 +11,7 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './linked-signal.component.css',
 })
 export class LinkedSignalComponent {
-  private readonly data = [...Array(100).keys()].map(key => ({
+  private readonly data: DataItem[] = [...Array(100).keys()].map(key => ({
     id: key,
     value: `item ${key}`,
   }));
@@ -16,22 +19,22 @@ export class LinkedSignalComponent {
   /**
    * A signal that is a private view of the data.
    */
-  private items = signal(this.data);
+  private items: WritableSignal<DataItem[]> = signal(this.data);
 
   /**
    * A signal to hold the search term.
    */
-  protected search = signal('');
+  protected search: WritableSignal<string | undefined> = signal('');
 
   /**
    * A readonly view of the search term.
    */
-  protected searchTerm = this.search.asReadonly();
+  protected searchTerm: Signal<string | undefined> = this.search.asReadonly();
 
   /**
    * A computed signal that return the first search result.
    */
-  protected searchResult = computed(() => {
+  protected searchResult: Signal<DataItem | undefined> = computed(() => {
     const value = this.search();
     const item = value
       ? this.items().find(item => item.value.includes(value))
@@ -42,14 +45,16 @@ export class LinkedSignalComponent {
   /**
    * A linked signal that filters the data when the search signal changes.
    */
-  protected currentPage = linkedSignal({
+  protected currentPage: WritableSignal<number> = linkedSignal({
     source: this.search,
-    computation: (current, previous?: {source: string; value: number}) => {
+    computation: (
+      current: string | undefined,
+      previous?: { source: string | undefined; value: number | undefined },
+    ) => {
       if (!current?.length) 1;
 
-      const value = this.search();
-      const index = value
-        ? this.items().findIndex(item => item.value.includes(value))
+      const index = current
+        ? this.items().findIndex(item => item.value.includes(current))
         : 0;
       const page = index >= 0 ? Math.floor(index / 10) : -1;
       const result = page >= 0 ? page + 1 : (previous?.value ?? 1);
@@ -61,7 +66,7 @@ export class LinkedSignalComponent {
   /**
    * A computed signal that displays the items on the current page.
    */
-  protected displayedItems = computed(() => {
+  protected displayedItems: Signal<DataItem[]> = computed(() => {
     return this.items().slice(
       (this.currentPage() - 1) * 10,
       this.currentPage() * 10,

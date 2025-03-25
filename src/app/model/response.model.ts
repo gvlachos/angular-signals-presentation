@@ -1,4 +1,4 @@
-import { Quote } from "./data.model";
+import { Quote } from './data.model';
 
 export interface QuotesResponse {
   quotes: Quote[];

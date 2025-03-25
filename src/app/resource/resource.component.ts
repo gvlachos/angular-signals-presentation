@@ -1,4 +1,5 @@
-import { Component, inject, ResourceStatus } from '@angular/core';
+// prettier-ignore
+import { Component,computed,inject,ResourceStatus,Signal,} from '@angular/core';
 import { DataSourceApiService } from '../data-source-api.service';
 
 @Component({
@@ -10,13 +11,23 @@ import { DataSourceApiService } from '../data-source-api.service';
 })
 export class ResourceComponent {
   readonly resourceStatus = ResourceStatus;
-  readonly resourceStatusText = Object.keys(ResourceStatus).filter(k => isNaN(Number(k)));
+  readonly resourceStatusText = Object.keys(ResourceStatus).filter(k =>
+    isNaN(Number(k)),
+  );
 
   protected dataSourceApiService = inject(DataSourceApiService);
 
-  protected error = this.dataSourceApiService.status() === this.resourceStatus.Error;
+  protected error: Signal<boolean> = computed(
+    () => this.dataSourceApiService.status() === ResourceStatus.Error,
+  );
 
-  protected next(): void {
-    this.dataSourceApiService.skip.update(skip => skip + this.dataSourceApiService.limit());
+  protected disableNext: Signal<boolean> = computed(
+    () => !this.dataSourceApiService.hasMore() || this.error(),
+  );
+
+  protected nextPage(): void {
+    this.dataSourceApiService.skip.update(
+      skip => skip + this.dataSourceApiService.limit(),
+    );
   }
 }

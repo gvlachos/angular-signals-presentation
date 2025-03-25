@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import { Component, Signal, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-writable-signal',
@@ -10,12 +10,12 @@ export class WritableSignalComponent {
   /**
    * A signal that can be written to.
    */
-  protected signal = signal(100);
+  protected signal: WritableSignal<number> = signal(100);
 
   /**
    * A readonly view of the signal.
    */
-  protected view = this.signal.asReadonly();
+  protected view: Signal<number> = this.signal.asReadonly();
 
   /**
    * Set the signal to a new value.
