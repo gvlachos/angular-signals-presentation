@@ -1,4 +1,4 @@
-import { Component,effect,EffectRef,inject,signal,WritableSignal } from '@angular/core';
+import { Component, effect, EffectRef, inject, signal, WritableSignal } from '@angular/core';
 import { BrowserStorageService } from '../browser-storage.service';
 
 @Component({

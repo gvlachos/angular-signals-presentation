@@ -1,4 +1,4 @@
-import { Component,computed,signal,Signal,WritableSignal } from '@angular/core';
+import { Component, computed, signal, Signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-computed-signal',

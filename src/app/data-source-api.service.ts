@@ -1,4 +1,4 @@
-import { computed,Injectable,linkedSignal,resource,ResourceRef,ResourceStatus,signal,Signal,WritableSignal } from '@angular/core';
+import { computed, Injectable, linkedSignal, resource, ResourceRef, ResourceStatus, signal, Signal, WritableSignal } from '@angular/core';
 import { DefaultLimit, StartPosition } from './model/constants';
 import { Quote } from './model/data.model';
 import { QuotesResponse } from './model/response.model';

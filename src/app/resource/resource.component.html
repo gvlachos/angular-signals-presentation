@@ -1,8 +1,5 @@
 <div class="mr-2 ml-2">
-  <table
-    class="container mx-auto border-collapse border border-gray-300"
-    style="min-height: 320px"
-  >
+  <table class="container mx-auto border-collapse border border-gray-300" style="min-height: 320px">
     <thead>
       <tr>
         <th class="max-w-sm min-w-12">Id</th>
@@ -13,27 +10,21 @@
 
     <tbody style="min-height: 320px">
       @for (quote of dataSourceApiService.quotes(); track quote.id) {
-        <tr class="border border-gray-300">
-          <td class="pr-2 pl-2 text-center">{{ quote.id }}</td>
-          <td
-            class="max-w-sm truncate pt-4 pr-2 pb-4 pl-2"
-            [title]="quote.quote"
-          >
-            {{ quote.quote }}
-          </td>
-          <td class="text-center">{{ quote.author }}</td>
-        </tr>
+      <tr class="border border-gray-300">
+        <td class="pr-2 pl-2 text-center">{{ quote.id }}</td>
+        <td class="max-w-sm truncate pt-4 pr-2 pb-4 pl-2" [title]="quote.quote">
+          {{ quote.quote }}
+        </td>
+        <td class="text-center">{{ quote.author }}</td>
+      </tr>
       } @empty {
-        @if (!dataSourceApiService.isloading()) {
-          <tr>
-            <td
-              class="border border-gray-300 pt-4 pr-2 pb-4 pl-2 text-center"
-              colspan="3"
-            >
-              No quotes found
-            </td>
-          </tr>
-        }
+      @if (!dataSourceApiService.isloading()) {
+      <tr>
+        <td class="border border-gray-300 pt-4 pr-2 pb-4 pl-2 text-center" colspan="3">
+          No quotes found
+        </td>
+      </tr>
+      }
       }
     </tbody>
   </table>
@@ -45,14 +36,9 @@
       </div>
     </div>
     <div>
-      <button
-        [disabled]="disableNext()"
-        (click)="nextPage()"
-        class="rounded-md border border-gray-300 p-2"
-        [class.cursor-not-allowed]="disableNext()"
-        [class.opacity-60]="disableNext()"
-        [class.cursor-pointer]="!disableNext()"
-      >
+      <button [disabled]="disableNext()" (click)="nextPage()" class="rounded-md border border-gray-300 p-2"
+        [class.cursor-not-allowed]="disableNext()" [class.opacity-60]="disableNext()"
+        [class.cursor-pointer]="!disableNext()">
         More
       </button>
     </div>

@@ -1,4 +1,4 @@
-import { Component,computed,linkedSignal,Signal,signal,WritableSignal } from '@angular/core';
+import { Component, computed, linkedSignal, Signal, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 type DataItem = { id: number; value: string };

@@ -21,22 +21,13 @@
   <form [formGroup]="form">
     <fieldset class="ml-8 flex flex-col space-y-4">
       @for (option of signals; track option.label) {
-        <div class="grid grid-cols-[140px_1fr] grid-rows-1 gap-8">
-          <label
-            [for]="option.value"
-            [class.text-blue-600]="form.value.option === option.value"
-            [class.font-bold]="form.value.option === option.value"
-            >{{ option.label }}</label
-          >
+      <div class="grid grid-cols-[140px_1fr] grid-rows-1 gap-8">
+        <label [for]="option.value" [class.text-blue-600]="form.value.option === option.value"
+          [class.font-bold]="form.value.option === option.value">{{ option.label }}</label>
 
-          <input
-            [id]="option.value"
-            type="radio"
-            formControlName="option"
-            [value]="option.value"
-            class="cursor-pointer"
-          />
-        </div>
+        <input [id]="option.value" type="radio" formControlName="option" [value]="option.value"
+          class="cursor-pointer" />
+      </div>
       }
     </fieldset>
   </form>
@@ -47,34 +38,34 @@
     </div>
 
     @if (selected() === writableSignal) {
-      <app-writable-signal />
-      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
+    <app-writable-signal />
+    <div class="text-center text-lg font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === computedSignal) {
-      <app-computed-signal />
-      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
+    <app-computed-signal />
+    <div class="text-center text-lg font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === effectSignal) {
-      <app-effect-signal />
-      <div class="text-center text-lg font-semibold text-violet-600">
-        Developer preview
-      </div>
+    <app-effect-signal />
+    <div class="text-center text-lg font-semibold text-violet-600">
+      Developer preview
+    </div>
     }
 
     @if (selected() === linkedSignal) {
-      <app-linked-signal />
-      <div class="text-md mt-4 text-center font-semibold text-violet-600">
-        Developer preview
-      </div>
+    <app-linked-signal />
+    <div class="text-md mt-4 text-center font-semibold text-violet-600">
+      Developer preview
+    </div>
     }
 
     @if (selected() === resourceApi) {
-      <app-resource />
-      <div class="text-md mt-4 text-center font-semibold text-red-600">
-        Experimental
-      </div>
+    <app-resource />
+    <div class="text-md mt-4 text-center font-semibold text-red-600">
+      Experimental
+    </div>
     }
   </div>
 </div>

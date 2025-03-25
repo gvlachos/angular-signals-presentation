@@ -6,32 +6,22 @@
 
 <table class="m-4">
   @for (item of displayedItems(); track item.id) {
-    <tr>
-      <td
-        [style.color]="searchResult()?.id === item.id ? 'blue' : ''"
-        [style.fontWeight]="searchResult()?.id === item.id ? 'bold' : ''"
-      >
-        {{ item.value }}
-      </td>
-    </tr>
+  <tr>
+    <td [style.color]="searchResult()?.id === item.id ? 'blue' : ''"
+      [style.fontWeight]="searchResult()?.id === item.id ? 'bold' : ''">
+      {{ item.value }}
+    </td>
+  </tr>
   }
 </table>
 
 <div class="flex gap-12">
-  <button
-    class="previous-page-button"
-    [disabled]="currentPage() === 1"
-    [style.cursor]="currentPage() > 1 ? 'pointer' : 'not-allowed'"
-    (click)="previousPage()"
-  >
+  <button class="previous-page-button" [disabled]="currentPage() === 1"
+    [style.cursor]="currentPage() > 1 ? 'pointer' : 'not-allowed'" (click)="previousPage()">
     Previous Page
   </button>
-  <button
-    class="next-page-button"
-    [disabled]="!displayedItems().length"
-    [style.cursor]="displayedItems().length ? 'pointer' : 'not-allowed'"
-    (click)="nextPage()"
-  >
+  <button class="next-page-button" [disabled]="!displayedItems().length"
+    [style.cursor]="displayedItems().length ? 'pointer' : 'not-allowed'" (click)="nextPage()">
     Next Page
   </button>
 </div>
