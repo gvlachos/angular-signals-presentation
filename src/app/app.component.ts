@@ -44,7 +44,5 @@ export class AppComponent {
 
   protected form = new FormGroup({ option: this.control });
 
-  protected selected: Signal<string | undefined> = toSignal(
-    this.control.valueChanges,
-  );
+  protected selected: Signal<string | undefined> = toSignal(this.control.valueChanges);
 }
