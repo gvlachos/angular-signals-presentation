@@ -29,37 +29,37 @@
   </form>
 
   <div class="content">
-    <div class="text-md mb-4 ml-8 text-center font-semibold text-green-600">
+    <div class="text-2xl mb-4 ml-8 text-center font-semibold text-green-600">
       Angular 19.2.4
     </div>
 
     @if (selected() === writableSignal) {
       <app-writable-signal />
-      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
+      <div class="text-center text-xl font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === computedSignal) {
       <app-computed-signal />
-      <div class="text-center text-lg font-semibold text-green-600">Stable</div>
+      <div class="text-center text-xl font-semibold text-green-600">Stable</div>
     }
 
     @if (selected() === effectSignal) {
       <app-effect-signal />
-      <div class="text-center text-lg font-semibold text-violet-600">
+      <div class="text-center text-xl font-semibold text-violet-600">
         Developer preview
       </div>
     }
 
     @if (selected() === linkedSignal) {
       <app-linked-signal />
-      <div class="text-md mt-4 text-center font-semibold text-violet-600">
+      <div class="text-xl mt-4 text-center font-semibold text-violet-600">
         Developer preview
       </div>
     }
 
     @if (selected() === resourceApi) {
       <app-resource />
-      <div class="text-md mt-4 text-center font-semibold text-red-600">
+      <div class="text-xl mt-4 text-center font-semibold text-red-600">
         Experimental
       </div>
     }
