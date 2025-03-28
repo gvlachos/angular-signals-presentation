@@ -1,6 +1,6 @@
 # Angular Signals
 
-Angular Signals are a new, highly efficient way to manage state and reactivity in Angular applications. Unlike traditional change detection, signals allow fine-grained updates, meaning the UI updates only where needed resulting in better performance, especially for complex applications. They’re simpler than RxJS for many state management use cases, reducing the learning curve and improving developer productivity. With stable support in Angular 17+, adopting signals can lead to faster, more maintainable applications with less boilerplate code.
+Angular Signals is a new, highly efficient way to manage state and reactivity in Angular applications. Unlike traditional change detection, signals allow fine-grained updates, meaning the UI updates only where needed resulting in better performance, especially for complex applications. They’re simpler than RxJS for many state management use cases, reducing the learning curve and improving developer productivity. With stable support in Angular 17+, adopting signals can lead to faster, more maintainable applications with less boilerplate code.
 
 ## Angular Signals vs. RxJS: Key Differences & Comparison
 
