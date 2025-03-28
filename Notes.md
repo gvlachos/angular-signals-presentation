@@ -26,6 +26,6 @@ Angular Signals are a new, highly efficient way to manage state and reactivity i
 
 ✅ Use RxJS if:
 
-    You’re working with asynchronous data streams (e.g., WebSockets, API calls, user input handling).
+    You’re working with asynchronous data streams (e.g., WebSockets, API calls).
 
-    You need complex event processing, transformations, or debouncing.
+    You need complex event processing.
