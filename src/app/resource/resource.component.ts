@@ -9,15 +9,15 @@ import { DataSourceApiService } from '../data-source-api.service';
   styleUrl: './resource.component.css',
 })
 export class ResourceComponent {
-  readonly resourceStatus = ResourceStatus;
-  readonly resourceStatusText = Object.keys(ResourceStatus).filter(k =>
-    isNaN(Number(k)),
-  );
+  // readonly resourceStatus = ResourceStatus;
+  // readonly resourceStatusText = Object.keys(ResourceStatus).filter(k =>
+  //   isNaN(Number(k)),
+  // );
 
   protected dataSourceApiService = inject(DataSourceApiService);
 
   protected error: Signal<boolean> = computed(
-    () => this.dataSourceApiService.status() === ResourceStatus.Error,
+    () => this.dataSourceApiService.status() === 'error',
   );
 
   protected disableNext: Signal<boolean> = computed(
