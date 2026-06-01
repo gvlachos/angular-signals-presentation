@@ -3,6 +3,8 @@ import { DefaultLimit, StartPosition } from './model/constants';
 import { Quote } from './model/data.model';
 import { QuotesResponse } from './model/response.model';
 
+const IS_LOADING = "loading";
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,9 +13,9 @@ export class DataSourceApiService {
     QuotesResponse,
     unknown
   >({
-    request: () => this.url(),
-    loader: async options => {
-      const request = options.request as string;
+    params: () => this.url(),
+    stream: async options => {
+      const request = options.params as string;
       const response = await fetch(request).then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -43,10 +45,10 @@ export class DataSourceApiService {
   );
 
   isloading: Signal<boolean> = computed(
-    () => this.status() === ResourceStatus.Loading,
+    () => this.status() === IS_LOADING
   );
 
-  status: Signal<ResourceStatus> = this.quotesResponse.status;
+  status: Signal<ResourceStatus | undefined> = this.quotesResponse.status;
 
   quotes: Signal<Quote[]> = this.data.asReadonly();
   // the following line is not quite equivalent to the above line
