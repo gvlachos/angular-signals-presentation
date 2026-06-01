@@ -1,4 +1,4 @@
-import { Component, computed, inject, ResourceStatus, Signal } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { DataSourceApiService } from '../data-source-api.service';
 
 @Component({
@@ -9,11 +9,6 @@ import { DataSourceApiService } from '../data-source-api.service';
   styleUrl: './resource.component.css',
 })
 export class ResourceComponent {
-  // readonly resourceStatus = ResourceStatus;
-  // readonly resourceStatusText = Object.keys(ResourceStatus).filter(k =>
-  //   isNaN(Number(k)),
-  // );
-
   protected dataSourceApiService = inject(DataSourceApiService);
 
   protected error: Signal<boolean> = computed(

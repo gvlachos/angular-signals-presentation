@@ -21,7 +21,7 @@
 
   <div class="content">
     <div class="text-2xl mb-4 ml-8 text-center font-semibold text-green-600">
-      Angular 20.3.26
+      Angular 21.2.13
     </div>
 
     @if (selected() === writableSignal) {
@@ -36,16 +36,12 @@
 
     @if (selected() === effectSignal) {
     <app-effect-signal />
-    <div class="text-center text-xl font-semibold text-violet-600">
-      Developer preview
-    </div>
+    <div class="text-center text-xl font-semibold text-violet-600">Stable</div>
     }
 
     @if (selected() === linkedSignal) {
     <app-linked-signal />
-    <div class="text-xl mt-4 text-center font-semibold text-violet-600">
-      Developer preview
-    </div>
+    <div class="text-xl mt-4 text-center font-semibold text-violet-600">Stable</div>
     }
 
     @if (selected() === resourceApi) {

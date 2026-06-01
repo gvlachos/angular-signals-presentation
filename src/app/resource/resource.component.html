@@ -31,9 +31,9 @@
 
   <div class="mt-2 mr-4 ml-4 flex items-center justify-between font-semibold">
     <div class="status" [class.text-red-600]="error()">
-      <!-- <div class="status-text">
-        {{ resourceStatusText[dataSourceApiService.status()] }}
-      </div> -->
+      <div class="status-text">
+        {{ dataSourceApiService.status() }}
+      </div>
     </div>
     <div>
       <button [disabled]="disableNext()" (click)="nextPage()" class="rounded-md border border-gray-300 p-2"

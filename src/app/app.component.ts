@@ -35,7 +35,7 @@ export class AppComponent {
   readonly signals: Option[] = [
     { label: 'Writable Singal', value: this.writableSignal },
     { label: 'Computed Singal', value: this.computedSignal },
-    { label: 'Effect Singal', value: this.effectSignal },
+    { label: 'Effect', value: this.effectSignal },
     { label: 'Linked Singal', value: this.linkedSignal },
     { label: 'Resource API', value: this.resourceApi },
   ];

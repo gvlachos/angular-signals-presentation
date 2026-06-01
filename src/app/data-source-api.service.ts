@@ -14,7 +14,7 @@ export class DataSourceApiService {
     unknown
   >({
     params: () => this.url(),
-    stream: async options => {
+    loader: async options => {
       const request = options.params as string;
       const response = await fetch(request).then(response => {
         if (!response.ok) {
@@ -48,7 +48,7 @@ export class DataSourceApiService {
     () => this.status() === IS_LOADING
   );
 
-  status: Signal<ResourceStatus | undefined> = this.quotesResponse.status;
+  status: Signal<ResourceStatus> = this.quotesResponse?.status ?? '';
 
   quotes: Signal<Quote[]> = this.data.asReadonly();
   // the following line is not quite equivalent to the above line
