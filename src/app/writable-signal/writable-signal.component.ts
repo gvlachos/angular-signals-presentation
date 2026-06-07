@@ -26,5 +26,5 @@ export class WritableSignalComponent {
   /**
    * Increment the signal by 1.
    */
-  protected increment = () => this.signal.update(current => current + 1);
+  protected increment = () => this.signal.update((current) => current + 1);
 }

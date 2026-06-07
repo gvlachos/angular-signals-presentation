@@ -5,5 +5,5 @@ export enum ResourceStatus {
   'loading',
   'reloading',
   'resolved',
-  'local'
-};
+  'local',
+}

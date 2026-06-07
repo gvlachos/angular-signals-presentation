@@ -1,4 +1,4 @@
-import { Component, computed, signal, Signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, signal, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-computed-signal',
@@ -11,15 +11,15 @@ export class ComputedSignalComponent {
   /**
    * A writable signal
    */
-  protected signal: WritableSignal<number> = signal(100);
+  protected signal = signal(100);
 
   /**
    * A computed signal that is twice the value of the writable signal.
    */
-  protected double: Signal<number> = computed(() => this.signal() * 2);
+  protected double = computed(() => this.signal() * 2);
 
   /**
    * Increment the signal by 1.
    */
-  protected increment = () => this.signal.update(current => current + 1);
+  protected increment = () => this.signal.update((current) => current + 1);
 }

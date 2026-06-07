@@ -16,12 +16,7 @@ export class BrowserStorageService {
         const value = this.localStorage.getItem(key);
         return value ? JSON.parse(value) : defaultValue;
       } catch (error) {
-        console.warn(
-          'localStorage.get',
-          key,
-          this.localStorage.getItem(key),
-          error,
-        );
+        console.warn('localStorage.get', key, this.localStorage.getItem(key), error);
       }
     }
     return undefined;
@@ -46,16 +41,16 @@ export class BrowserStorageService {
   clear(userid: number): void {
     if (this.isLocalStorageSupported) {
       Object.keys(this.localStorage)
-        .filter(key => key.startsWith(`${userid}`))
-        .forEach(key => this.remove(key));
+        .filter((key) => key.startsWith(`${userid}`))
+        .forEach((key) => this.remove(key));
     }
   }
 
   debug(userid: number): void {
     if (this.isLocalStorageSupported) {
       Object.keys(this.localStorage)
-        .filter(key => key.startsWith(`${userid}`))
-        .forEach(key => {
+        .filter((key) => key.startsWith(`${userid}`))
+        .forEach((key) => {
           console.log(userid, key, this.localStorage.getItem(key));
         });
     }
