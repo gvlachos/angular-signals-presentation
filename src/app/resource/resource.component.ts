@@ -1,4 +1,4 @@
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, computed, inject, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { DataSourceApiService } from '../data-source-api.service';
 
 @Component({
@@ -6,6 +6,7 @@ import { DataSourceApiService } from '../data-source-api.service';
   imports: [],
   providers: [],
   templateUrl: './resource.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resource.component.css',
 })
 export class ResourceComponent {

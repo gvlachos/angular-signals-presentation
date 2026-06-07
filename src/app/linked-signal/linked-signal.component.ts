@@ -1,4 +1,4 @@
-import { Component, computed, linkedSignal, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, linkedSignal, Signal, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 interface DataItem { id: number; value: string }
@@ -7,6 +7,7 @@ interface DataItem { id: number; value: string }
   selector: 'app-linked-signal',
   imports: [FormsModule],
   templateUrl: './linked-signal.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './linked-signal.component.css',
 })
 export class LinkedSignalComponent {

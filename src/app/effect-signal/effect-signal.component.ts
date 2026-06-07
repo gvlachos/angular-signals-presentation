@@ -1,10 +1,11 @@
-import { Component, effect, EffectRef, inject, signal, WritableSignal } from '@angular/core';
+import { Component, effect, EffectRef, inject, signal, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { BrowserStorageService } from '../browser-storage.service';
 
 @Component({
   selector: 'app-effect-signal',
   imports: [],
   templateUrl: './effect-signal.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './effect-signal.component.css',
 })
 export class EffectSignalComponent {
